@@ -5,7 +5,6 @@ const createToken = (credential) => {
 };
 
 const validateToken = (req, res, next) => {
-  console.log("in here");
   let accessToken = req.cookies.authToken;
   console.log(accessToken);
   if (!accessToken) {

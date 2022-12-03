@@ -14,7 +14,7 @@ const addTrain = async (req, res) => {
       .json({ message: "Fields are empty!", status: "failed" });
   }
   const trainService = new TrainService();
-  const train = trainService.addTrainDetails(req.body);
+  const train = await trainService.addTrainDetails(req.body);
   if (train) {
     return res
       .status(200)
@@ -26,4 +26,16 @@ const addTrain = async (req, res) => {
   }
 };
 
-module.exports = { addTrain };
+const getTrains = async (req, res) => {
+  const trainService = new TrainService();
+  const trains = await trainService.getTrainsData();
+  if (trains) {
+    return res.status(200).json({ message: trains, status: "success" });
+  } else {
+    return res
+      .status(200)
+      .json({ message: "No train exist", status: "failed" });
+  }
+};
+
+module.exports = { addTrain, getTrains };
