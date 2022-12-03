@@ -43,6 +43,58 @@ class TrainController {
         .json({ message: "No train exist", status: "failed" });
     }
   }
+
+  async updateTrain(req, res) {
+    const { name, source, destination, totalSeats, price, startDate, endDate } =
+      req.body;
+    if (
+      !name ||
+      !source ||
+      !destination ||
+      !totalSeats ||
+      !price ||
+      !startDate ||
+      !endDate
+    ) {
+      return res
+        .status(200)
+        .json({ message: "Fields are empty!", status: "failed" });
+    }
+
+    let trainService = new TrainService();
+    const train = await trainService.updateTrainData(req.body);
+    if (train) {
+      return res.status(200).json({
+        message: "Train Data Updated Successfully!",
+        status: "success",
+      });
+    } else {
+      return res
+        .status(200)
+        .json({ message: "Update Data Failed", status: "failed" });
+    }
+  }
+
+  async deleteTrain(req, res) {
+    const { name } = req.body;
+    if (!name)
+      return res
+        .status(200)
+        .json({ message: "Fields are empty!", status: "failed" });
+
+    let trainService = new TrainService();
+    const train = await trainService.deleteTrainData(name);
+    if (train) {
+      return res.status(200).json({
+        message: "Train Data Deleted Successfully!",
+        status: "success",
+      });
+    } else {
+      return res
+        .status(200)
+        .json({ message: "Delete Data Failed", status: "failed" });
+    }
+  }
 }
 
 module.exports = { TrainController };

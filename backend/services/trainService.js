@@ -32,5 +32,26 @@ class TrainService {
     });
     return _trains;
   }
+
+  async updateTrainData(trainObj) {
+    const { name, source, destination, totalSeats, price, startDate, endDate } =
+      trainObj;
+    const filter = { name: name };
+    const train = await Train.findOneAndUpdate(filter, {
+      name: name,
+      source: source,
+      destination: destination,
+      totalseats: parseInt(totalSeats),
+      price: parseInt(price),
+      startDate: new Date(startDate),
+      endDate: new Date(endDate),
+    });
+    return train;
+  }
+
+  async deleteTrainData(name) {
+    const train = await Train.deleteOne({name: name})
+    return train;
+  }
 }
 module.exports = { TrainService };
