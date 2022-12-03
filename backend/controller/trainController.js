@@ -1,4 +1,4 @@
-const Train = require("../models/train.model");
+const { TrainService } = require("../services/trainService");
 
 function emptyFields(obj) {
   const { name, source, destination, totalSeats, price, startDate } = obj;
@@ -8,21 +8,13 @@ function emptyFields(obj) {
 }
 
 const addTrain = async (req, res) => {
-  const { name, source, destination, totalSeats, price, startDate } = req.body;
   if (emptyFields(req.body)) {
     return res
       .status(200)
       .json({ message: "Fields are empty!", status: "failed" });
   }
-
-  const train = new Train.create({
-    name: name,
-    source: source,
-    destination: destination,
-    totalseats: parseInt(totalSeats),
-    price: parseInt(price),
-    startDate: startDate,
-  });
+  const trainService = new TrainService();
+  const train = trainService.addTrainDetails(req.body);
   if (train) {
     return res
       .status(200)
