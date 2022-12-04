@@ -17,8 +17,8 @@ const validateToken = (req, res, next) => {
     const validToken = jwt.verify(accessToken, process.env.SECRETKEY);
     if (validToken) {
       console.log(validToken);
-      req.email = validToken;
-      console.log(req.email);
+      req.userEmail = validToken;
+      console.log(req.userEmail);
       return next();
     }
   } catch (err) {
