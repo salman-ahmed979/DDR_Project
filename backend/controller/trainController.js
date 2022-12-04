@@ -4,7 +4,7 @@ class TrainController {
   constructor() {}
 
   async addTrain(req, res) {
-    const { name, source, destination, totalSeats, price, startDate } =
+    const { name, source, destination, totalSeats, price, startDate, endDate } =
       req.body;
     if (
       !name ||
@@ -12,7 +12,8 @@ class TrainController {
       !destination ||
       !totalSeats ||
       !price ||
-      !startDate
+      !startDate ||
+      !endDate
     ) {
       return res
         .status(200)
