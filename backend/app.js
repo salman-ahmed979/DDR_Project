@@ -6,6 +6,7 @@ const { validRole } = require("./middleware/validateRole");
 const { validateToken } = require("./middleware/JWT");
 const userRoute = require("./routes/userRoute");
 const trainRoute = require("./routes/trainRoute");
+const bookRoute = require("./routes/bookRoute");
 
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
@@ -23,6 +24,7 @@ mongoose.connect("mongodb://0.0.0.0:27017/railway_db");
 
 app.use("/user", userRoute);
 app.use("/train", validateToken, validRole, trainRoute);
+app.use("/book", validateToken, validRole, bookRoute);
 
 // Error page
 app.use("*", (req, res) => {
