@@ -20,11 +20,11 @@ app.use(cookieParser());
 app.use(express.json());
 
 // Database connection
-mongoose.connect("mongodb://0.0.0.0:27017/railway_db");
+mongoose.connect(process.env.DATABASE_CONNECTION);
 
 app.use("/user", userRoute);
 app.use("/train", validateToken, validRole, trainRoute);
-app.use("/book", validateToken, validRole, bookRoute);
+app.use("/book", validateToken, bookRoute);
 
 // Error page
 app.use("*", (req, res) => {

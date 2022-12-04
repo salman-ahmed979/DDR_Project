@@ -30,7 +30,7 @@ class TrainService {
         availableseats: item.availableseats,
         price: item.price,
         startDate:
-          item.startDate == null ? null : item.startDate.toDateString(),
+        item.startDate == null ? null : item.startDate.toDateString(),
         endDate: item.endDate == null ? null : item.endDate.toDateString(),
       });
     });
