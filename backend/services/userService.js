@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const bcrypt = require("bcrypt");
 
 class UserService {
   constructor() {}
@@ -15,8 +16,8 @@ class UserService {
     return user;
   }
 
-  async getUser(email) {
-    const user = await User.findOne({ email });
+  async getUser(_email) {
+    const user = await User.findOne({ email: _email });
     return user;
   }
 }

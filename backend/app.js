@@ -20,7 +20,15 @@ app.use(cookieParser());
 app.use(express.json());
 
 // Database connection
-mongoose.connect(process.env.DATABASE_CONNECTION);
+mongoose
+  .connect(process.env.DATABASE_CONNECTION)
+  .then(() => {
+    //Connecting to database
+    console.log("Connected to Database");
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 
 app.use("/user", userRoute);
 app.use("/train", validateToken, validRole, trainRoute);

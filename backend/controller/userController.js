@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const { UserService } = require("../services/userService");
+const { createToken } = require("../middleware/JWT");
 
 class UserController {
   constructor() {}
@@ -33,7 +34,7 @@ class UserController {
         .json({ message: "Fields are empty!", status: "failed" });
 
     let userService = new UserService();
-    const user = await userService.getUser(req.body);
+    const user = await userService.getUser(email);
 
     if (user && (await bcrypt.compare(password, user.password))) {
       const accessToken = createToken(user.email);
