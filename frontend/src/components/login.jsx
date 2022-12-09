@@ -1,7 +1,23 @@
 import "../css/login.css";
 import MyImage from "../assets/login-page.jpg";
 import MyImage1 from "../assets/logo.png";
-const Login = () => {
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useLogin } from "../hooks/useLogin";
+const Login = ({ url, showLogin }) => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const history = useHistory();
+  const userProfile = { email, password };
+  const { loginReq, error, loading } = useLogin();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await loginReq(userProfile, url);
+    if (!error) {
+      history.push("/");
+    }
+  };
   return (
     <div className="loginform">
       <nav>
@@ -23,21 +39,24 @@ const Login = () => {
               <h1>
                 Hi, <span></span> Welcome Back!
               </h1>
-              <form>
+              <form onSubmit={handleSubmit}>
+                <div className="error">
+                  <p>{error}</p>
+                </div>
                 <div className="username">
-                  <label>Username:</label>
-                  <input type="text" required />
+                  <label>Email:</label>
+                  <input type="email" />
                 </div>
                 <div className="password">
                   <label>Password:</label>
                   <input type="password" required />
                 </div>
                 <div className="submitButton">
-                  <button>Login</button>
+                  <button disabled={loading}>Login</button>
                 </div>
               </form>
               <div className="new-account">
-                <a href="#">Create an account?</a>
+                <a href="/signup">Create an account?</a>
               </div>
             </div>
           </div>
