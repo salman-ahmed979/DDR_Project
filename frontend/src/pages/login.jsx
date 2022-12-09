@@ -4,7 +4,8 @@ import MyImage1 from "../assets/logo.png";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
-const Login = ({ url, showLogin }) => {
+import { Link } from "react-router-dom";
+const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const history = useHistory();
@@ -13,9 +14,9 @@ const Login = ({ url, showLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await loginReq(userProfile, url);
+    await loginReq(userProfile);
     if (!error) {
-      history.push("/");
+      email.includes("admin") ? history.push("/admin") : history.push("/user");
     }
   };
   return (
@@ -45,18 +46,30 @@ const Login = ({ url, showLogin }) => {
                 </div>
                 <div className="username">
                   <label>Email:</label>
-                  <input type="email" />
+                  <input
+                    type="email"
+                    required
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
                 </div>
                 <div className="password">
                   <label>Password:</label>
-                  <input type="password" required />
+                  <input
+                    type="password"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    required
+                  />
                 </div>
                 <div className="submitButton">
                   <button disabled={loading}>Login</button>
                 </div>
               </form>
               <div className="new-account">
-                <a href="/signup">Create an account?</a>
+                <Link to="/signup">Create an account?</Link>
               </div>
             </div>
           </div>

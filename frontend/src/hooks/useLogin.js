@@ -3,10 +3,10 @@ import { useState } from "react";
 export const useLogin = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const loginReq = async (userProfile, url) => {
+  const loginReq = async (userProfile) => {
     setError(null);
     setLoading(false);
-    const res = await fetch(url, {
+    const res = await fetch("http://localhost:5000/user/login", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(userProfile),

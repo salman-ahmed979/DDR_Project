@@ -4,7 +4,7 @@ import MyImage1 from "../assets/logo.png";
 import { useSignup } from "../hooks/useSignup";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-const Signup = ({ url }) => {
+const Signup = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -14,9 +14,9 @@ const Signup = ({ url }) => {
   const { signupReq, error, loading } = useSignup();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signupReq(user, url);
+    await signupReq(user);
     if (!error) {
-      history.push("/");
+      email.includes("admin") ? history.push("/admin") : history.push("/user");
     }
   };
   return (

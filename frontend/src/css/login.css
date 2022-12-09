@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Arizonia&display=swap");
+.loginform {
+  background: #101820ff;
+}
 .loginform nav a {
   position: absolute;
 
@@ -48,6 +50,7 @@
   line-height: 60px;
   font-weight: 800;
   text-transform: capitalize;
+  color: #f2aa4cff;
 }
 .loginform .form h1 span {
   display: block;
@@ -62,6 +65,7 @@
   text-transform: capitalize;
   display: block;
   margin: 15px 0;
+  color: #fbfbfb;
 }
 .loginform .form form input {
   display: block;
@@ -84,7 +88,8 @@
   outline: none;
   font-size: 18px;
   font-weight: 600;
-  background: #fbb13c;
+  color: #fbfbfb;
+  background: #f2aa4cff;
 }
 .loginform .form .new-account {
   text-align: center;
@@ -93,4 +98,5 @@
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 400;
+  color: #ef6848;
 }
