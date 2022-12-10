@@ -28,14 +28,14 @@ class UserController {
 
   async login(req, res) {
     const { email, password } = req.body;
-    if (email === "" || password === "")
+    if (email === "" || password === "") {
       return res
         .status(200)
         .json({ message: "Fields are empty!", status: "failed" });
+    }
 
     let userService = new UserService();
     const user = await userService.getUser(email);
-
     if (user && (await bcrypt.compare(password, user.password))) {
       const accessToken = createToken(user.email);
       res.cookie("authToken", accessToken, {

@@ -12,6 +12,7 @@ export const useLogin = () => {
       body: JSON.stringify(userProfile),
     });
     const json = await res.json();
+    console.log(json.message);
     if (res.ok) {
       setError(null);
       setLoading(false);

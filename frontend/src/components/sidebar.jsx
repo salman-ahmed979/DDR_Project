@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import myLogo from "../assets/logo.png";
 import "../css/Sidebar.css";
 const Sidebar = () => {
@@ -10,19 +11,22 @@ const Sidebar = () => {
         </a>
       </div>
       <ul>
-        <li>
-          <div className="addtrain">
-            <i class="fa-solid fa-plus"></i>
-            <span> Add Train</span>
-          </div>
-        </li>
-
-        <li>
-          <div className="viewtrain">
-            <i class="fa-solid fa-train"></i>
-            <span>View Train</span>
-          </div>
-        </li>
+        <Link to="/admin/train/add">
+          <li>
+            <div className="addtrain">
+              <i class="fa-solid fa-plus"></i>
+              <span> Add Train</span>
+            </div>
+          </li>
+        </Link>
+        <Link to="/admin/train/view">
+          <li>
+            <div className="viewtrain">
+              <i class="fa-solid fa-train"></i>
+              <span>View Train</span>
+            </div>
+          </li>
+        </Link>
       </ul>
       <div className="logout">
         <button>

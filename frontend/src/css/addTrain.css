@@ -15,6 +15,13 @@
   text-transform: capitalize;
   color: #ef6848;
 }
+.addTrain .heading h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 45px;
+  line-height: 60px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
 .addTrain form {
   box-shadow: -1px 1px 7px 2px rgb(0 0 0 / 50%);
   background: #101820ff;
