@@ -1,5 +1,20 @@
+import { useState } from "react";
+import { Fragment } from "react";
 import "../css/editTrain.css";
+import { useTrain } from "../hooks/useTrain";
+import EditOnly from "./editablerows";
+import ReadOnly from "./readonlyrows";
 const EditableTrain = () => {
+  const { trains, Error, Loading } = useTrain();
+  const [_id, setID] = useState(null);
+  const setRowID = (e, userID) => {
+    e.preventDefault();
+    if (userID) {
+      setID(userID);
+    } else {
+      setID(null);
+    }
+  };
   return (
     <div className="train-table">
       <div className="tables">
@@ -18,150 +33,20 @@ const EditableTrain = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <p>Karachi Express</p>
-              </td>
-              <td>
-                <p>Karachi</p>
-              </td>
-              <td>
-                <p>Rawalpindi</p>
-              </td>
-              <td>
-                <p>155</p>
-              </td>
-              <td>
-                <p>50</p>
-              </td>
-              <td>
-                <p>1000</p>
-              </td>
-              <td>
-                <p>25-Mar-2022</p>
-              </td>
-              <td>
-                <p>25-Mar-2022</p>
-              </td>
-              <td>
-                <button>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-              </td>
-              <td>
-                <button>
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Karachi Express</p>
-              </td>
-              <td>
-                <p>Karachi</p>
-              </td>
-              <td>
-                <p>Rawalpindi</p>
-              </td>
-              <td>
-                <p>155</p>
-              </td>
-              <td>
-                <p>50</p>
-              </td>
-              <td>
-                <p>1000</p>
-              </td>
-              <td>
-                <p>25-Mar-2022</p>
-              </td>
-              <td>
-                <p>25-Mar-2022</p>
-              </td>
-              <td>
-                <button>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-              </td>
-              <td>
-                <button>
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Karachi Express</p>
-              </td>
-              <td>
-                <p>Karachi</p>
-              </td>
-              <td>
-                <p>Rawalpindi</p>
-              </td>
-              <td>
-                <p>155</p>
-              </td>
-              <td>
-                <p>50</p>
-              </td>
-              <td>
-                <p>1000</p>
-              </td>
-              <td>
-                <p>25-Mar-2022</p>
-              </td>
-              <td>
-                <p>25-Mar-2022</p>
-              </td>
-              <td>
-                <button>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-              </td>
-              <td>
-                <button>
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Karachi Express</p>
-              </td>
-              <td>
-                <p>Karachi</p>
-              </td>
-              <td>
-                <p>Rawalpindi</p>
-              </td>
-              <td>
-                <p>155</p>
-              </td>
-              <td>
-                <p>50</p>
-              </td>
-              <td>
-                <p>1000</p>
-              </td>
-              <td>
-                <p>25-Mar-2022</p>
-              </td>
-              <td>
-                <p>25-Mar-2022</p>
-              </td>
-              <td>
-                <button>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-              </td>
-              <td>
-                <button>
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
+            {trains &&
+              trains.map((train) => (
+                <Fragment>
+                  {_id === train._id ? (
+                    <EditOnly key={train._id} train={train} />
+                  ) : (
+                    <ReadOnly
+                      key={train._id}
+                      train={train}
+                      setRowID={setRowID}
+                    />
+                  )}
+                </Fragment>
+              ))}
           </tbody>
         </table>
       </div>

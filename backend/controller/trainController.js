@@ -16,20 +16,21 @@ class TrainController {
       !endDate
     ) {
       return res
-        .status(200)
+        .status(400)
         .json({ message: "Fields are empty!", status: "failed" });
     }
 
     let trainService = new TrainService();
-    const train = await trainService.addTrainDetails(req.body);
-    if (train) {
+    try {
+      await trainService.addTrainDetails(req.body);
+      return res.status(200).json({
+        message: "Train Data Added Successfully!",
+        status: "success",
+      });
+    } catch (err) {
       return res
-        .status(200)
-        .json({ message: "Train Data Added Successfully!", status: "success" });
-    } else {
-      return res
-        .status(200)
-        .json({ message: "Duplicate Data Exist", status: "failed" });
+        .status(400)
+        .json({ message: "Data already exist!", status: "failed" });
     }
   }
 
