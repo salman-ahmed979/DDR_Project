@@ -6,6 +6,9 @@ class UserService {
 
   async signUpUser(userObj) {
     const { name, email, password } = userObj;
+    const userAvailable = await this.getUser(email);
+    if (userAvailable != null)
+      return null;
     const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS));
     const hashPassword = await bcrypt.hash(password, salt);
     const user = await User.create({
