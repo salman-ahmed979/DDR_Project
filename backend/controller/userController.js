@@ -39,7 +39,7 @@ class UserController {
     if (user && (await bcrypt.compare(password, user.password))) {
       const accessToken = createToken(user.email);
       res.cookie("authToken", accessToken, {
-        maxAge: 180000,
+        maxAge: 18000000,
         httpOnly: true,
         secure: false,
       });

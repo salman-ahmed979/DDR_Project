@@ -24,7 +24,10 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.json());
-
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+});
 // Database connection
 mongoose
   .connect(process.env.DATABASE_CONNECTION)
@@ -38,7 +41,8 @@ mongoose
 
 app.use("/user", userRoute);
 app.use("/train", validateToken, validRole, trainRoute);
-app.use("/book", validateToken, bookRoute);
+
+// app.use("/book", validateToken, bookRoute);
 
 // Error page
 app.use("*", (req, res) => {

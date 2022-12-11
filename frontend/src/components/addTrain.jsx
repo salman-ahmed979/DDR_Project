@@ -2,13 +2,14 @@ import { useState } from "react";
 import "../css/addTrain.css";
 import { useTrain } from "../hooks/useTrain";
 const AddTrain = () => {
-  const [name, setName] = useState();
-  const [source, setSource] = useState();
-  const [destination, setDestination] = useState();
-  const [totalSeats, setSeats] = useState();
-  const [price, setPrice] = useState();
-  const [startDate, setsDate] = useState();
-  const [endDate, seteDate] = useState();
+  const [name, setName] = useState("");
+  const [source, setSource] = useState("");
+  const [destination, setDestination] = useState("");
+  const [totalSeats, setSeats] = useState("");
+  const [price, setPrice] = useState("");
+  const [startDate, setsDate] = useState("");
+  const [endDate, seteDate] = useState("");
+
   const trainProfile = {
     name,
     source,
@@ -21,7 +22,6 @@ const AddTrain = () => {
   const { addTrain, Error, Loading } = useTrain();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(trainProfile);
     await addTrain(trainProfile);
   };
   return (

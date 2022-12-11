@@ -4,8 +4,8 @@ import "../css/editTrain.css";
 import { useTrain } from "../hooks/useTrain";
 import EditOnly from "./editablerows";
 import ReadOnly from "./readonlyrows";
-const EditableTrain = () => {
-  const { trains, Error, Loading } = useTrain();
+const EditableTrain = ({ trains }) => {
+  const { editTrain, deleteTrain, Error, Loading } = useTrain();
   const [_id, setID] = useState(null);
   const setRowID = (e, userID) => {
     e.preventDefault();
@@ -14,6 +14,18 @@ const EditableTrain = () => {
     } else {
       setID(null);
     }
+  };
+  const handleEdit = async (e, trainProfile, _id) => {
+    e.preventDefault();
+    console.log(trainProfile);
+    let done = await editTrain(trainProfile, _id);
+    if (done) {
+      setRowID(e, null);
+    }
+  };
+  const handleDelete = async (e, _trainid) => {
+    e.preventDefault();
+    await deleteTrain(_trainid);
   };
   return (
     <div className="train-table">
@@ -37,12 +49,18 @@ const EditableTrain = () => {
               trains.map((train) => (
                 <Fragment>
                   {_id === train._id ? (
-                    <EditOnly key={train._id} train={train} />
+                    <EditOnly
+                      key={train._id}
+                      train={train}
+                      setRowID={setRowID}
+                      handleEdit={handleEdit}
+                    />
                   ) : (
                     <ReadOnly
                       key={train._id}
                       train={train}
                       setRowID={setRowID}
+                      handleDelete={handleDelete}
                     />
                   )}
                 </Fragment>

@@ -4,15 +4,21 @@
 .train-table::after {
   content: "";
   position: absolute;
-  width: 92%;
+  width: 100%;
   height: 3px;
   background: #ef6848;
-  left: 41px;
+  left: 0;
   right: 0;
-  bottom: -90px;
+  bottom: -65px;
+}
+.train-table {
+  margin: 0 30px;
+  box-shadow: 0px 5px 16px 7px rgb(0 0 0 / 50%);
 }
 .train-table .tables {
-  padding: 0 30px;
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 460px;
 }
 .train-table .tables table {
   width: 100%;
@@ -58,9 +64,9 @@ table tbody tr td button {
 .manage-trains .edit-heading {
   color: #ef6848;
   position: absolute;
-  top: 10%;
-  left: 28%;
-  width: 69%;
+  top: 8%;
+  left: 27%;
+  width: 71%;
 }
 .manage-trains .edit-heading .edit-heading-inner {
   position: relative;
@@ -71,7 +77,6 @@ table tbody tr td button {
   width: 100%;
   height: 3px;
   background: #ef6848;
-
   left: 0;
   right: 0;
   bottom: -20px;
@@ -82,4 +87,60 @@ table tbody tr td button {
   line-height: 60px;
   font-weight: 800;
   text-transform: capitalize;
+}
+.manage-trains .train-table .tables table tbody tr td input[type="text"] {
+  background: #101820ff;
+  color: #f7f7f7;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  border-bottom: 2px solid #ef6848;
+  border-right: 2px solid #ef6848;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.manage-trains .train-table .tables table tbody tr td input[type="number"] {
+  background: #101820ff;
+  color: #f7f7f7;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  border-bottom: 2px solid #ef6848;
+  border-right: 2px solid #ef6848;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.manage-trains
+  .train-table
+  .tables
+  table
+  tbody
+  tr
+  td
+  input[type="datetime-local"] {
+  background: #101820ff;
+  color: #f7f7f7;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  border-bottom: 2px solid #ef6848;
+  border-right: 2px solid #ef6848;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.manage-trains
+  .train-table
+  .tables
+  table
+  tbody
+  tr
+  td
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }

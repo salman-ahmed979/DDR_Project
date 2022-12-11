@@ -1,4 +1,4 @@
-const ReadOnly = ({ train, setRowID }) => {
+const ReadOnly = ({ train, setRowID, handleDelete }) => {
   return (
     <tr>
       <td>
@@ -35,7 +35,11 @@ const ReadOnly = ({ train, setRowID }) => {
         </button>
       </td>
       <td>
-        <button>
+        <button
+          onClick={(e) => {
+            handleDelete(e, train._id);
+          }}
+        >
           <i class="fa-solid fa-trash"></i>
         </button>
       </td>

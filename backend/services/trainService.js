@@ -41,25 +41,27 @@ class TrainService {
     return _trains;
   }
 
-  async updateTrainData(trainObj) {
+  async updateTrainData(trainObj, _id) {
     const { name, source, destination, totalSeats, price, startDate, endDate } =
       trainObj;
-    const filter = { name: name };
-    const train = await Train.findOneAndUpdate(filter, {
-      name: name,
-      source: source,
-      destination: destination,
-      totalseats: parseInt(totalSeats),
-      availableseats: parseInt(totalSeats),
-      price: parseInt(price),
-      startDate: new Date(startDate),
-      endDate: new Date(endDate),
-    });
+    const train = await Train.findOneAndUpdate(
+      { _id: _id },
+      {
+        name: name,
+        source: source,
+        destination: destination,
+        totalseats: parseInt(totalSeats),
+        availableseats: parseInt(totalSeats),
+        price: parseInt(price),
+        startDate: new Date(startDate),
+        endDate: new Date(endDate),
+      }
+    );
     return train;
   }
 
-  async deleteTrainData(name) {
-    const train = await Train.deleteOne({ name: name });
+  async deleteTrainData(_id) {
+    const train = await Train.deleteOne({ _id: _id });
     return train;
   }
 

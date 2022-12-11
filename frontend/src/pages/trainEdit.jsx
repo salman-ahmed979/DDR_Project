@@ -1,7 +1,31 @@
+import { useEffect, useState } from "react";
 import EditableTrain from "../components/editTrain";
 import Sidebar from "../components/sidebar";
 
 const EditTrains = () => {
+  const [Error, setError] = useState(null);
+  const [Loading, setLoading] = useState(false);
+  const [trains, setTrains] = useState();
+  useEffect(() => {
+    const getTrains = async () => {
+      setError(null);
+      setLoading(null);
+      const res = await fetch("http://localhost:5000/train/getTrains", {
+        credentials: "include",
+      });
+      const json = await res.json();
+      if (res.ok) {
+        setError(null);
+        setLoading(false);
+        setTrains(json.message);
+      }
+      if (!res.ok) {
+        setError(json.message);
+        setLoading(true);
+      }
+    };
+    getTrains();
+  }, []);
   return (
     <div className="manage-trains">
       <div className="row g-0 align-items-center">
@@ -14,7 +38,7 @@ const EditTrains = () => {
               <h1>Train Details</h1>
             </div>
           </div>
-          <EditableTrain />
+          <EditableTrain trains={trains} />
         </div>
       </div>
     </div>

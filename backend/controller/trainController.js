@@ -47,6 +47,7 @@ class TrainController {
   }
 
   async updateTrain(req, res) {
+    const { _id } = req.params;
     const { name, source, destination, totalSeats, price, startDate, endDate } =
       req.body;
     if (
@@ -59,12 +60,11 @@ class TrainController {
       !endDate
     ) {
       return res
-        .status(200)
+        .status(400)
         .json({ message: "Fields are empty!", status: "failed" });
     }
-
     let trainService = new TrainService();
-    const train = await trainService.updateTrainData(req.body);
+    const train = await trainService.updateTrainData(req.body, _id);
     if (train) {
       return res.status(200).json({
         message: "Train Data Updated Successfully!",
@@ -72,20 +72,20 @@ class TrainController {
       });
     } else {
       return res
-        .status(200)
+        .status(400)
         .json({ message: "Update Data Failed", status: "failed" });
     }
   }
 
   async deleteTrain(req, res) {
-    const { name } = req.body;
-    if (!name)
+    const { _id } = req.params;
+    if (!_id)
       return res
         .status(200)
         .json({ message: "Fields are empty!", status: "failed" });
 
     let trainService = new TrainService();
-    const train = await trainService.deleteTrainData(name);
+    const train = await trainService.deleteTrainData(_id);
     if (train) {
       return res.status(200).json({
         message: "Train Data Deleted Successfully!",
@@ -93,7 +93,7 @@ class TrainController {
       });
     } else {
       return res
-        .status(200)
+        .status(400)
         .json({ message: "Delete Data Failed", status: "failed" });
     }
   }
