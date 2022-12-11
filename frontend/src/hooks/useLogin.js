@@ -9,6 +9,7 @@ export const useLogin = () => {
     const res = await fetch("http://localhost:5000/user/login", {
       method: "POST",
       headers: { "Content-type": "application/json" },
+      credentials: "include",
       body: JSON.stringify(userProfile),
     });
     const json = await res.json();
