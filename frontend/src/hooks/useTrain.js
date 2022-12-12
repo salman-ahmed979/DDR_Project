@@ -36,12 +36,11 @@ export const useTrain = () => {
     if (res.ok) {
       setError(null);
       setLoading(false);
-      console.log(json.mesage);
+      return "ok";
     }
     if (!res.ok) {
       setError(json.message);
       setLoading(true);
-      console.log(json.mesage);
     }
   };
   const deleteTrain = async (_id) => {
@@ -55,13 +54,10 @@ export const useTrain = () => {
     if (res.ok) {
       setError(null);
       setLoading(false);
-
-      console.log(json.mesage);
     }
     if (!res.ok) {
       setError(json.message);
       setLoading(true);
-      console.log(json.mesage);
     }
   };
   return { addTrain, editTrain, deleteTrain, Error, Loading };

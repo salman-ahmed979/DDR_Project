@@ -18,7 +18,7 @@
 .train-table .tables {
   overflow-x: auto;
   overflow-y: auto;
-  height: 460px;
+  max-height: 460px;
 }
 .train-table .tables table {
   width: 100%;
@@ -143,4 +143,10 @@ table tbody tr td button {
   td
   input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
+}
+.edit nav {
+  margin: 0 30px;
+}
+.edit nav ol li p {
+  display: inline;
 }

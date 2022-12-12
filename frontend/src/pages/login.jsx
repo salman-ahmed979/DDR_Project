@@ -16,7 +16,9 @@ const Login = () => {
     e.preventDefault();
     await loginReq(userProfile);
     if (!error) {
-      email.includes("admin") ? history.push("/admin") : history.push("/user");
+      email.includes("admin")
+        ? history.push("/admin/train/view")
+        : history.push("/user");
     }
   };
   return (
