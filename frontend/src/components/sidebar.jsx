@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import myLogo from "../assets/logo.png";
+import { useHistory } from "react-router-dom";
+import Cookie from "js-cookie";
 import "../css/Sidebar.css";
 const Sidebar = () => {
+  const history = useHistory();
   return (
     <div className="sidebar">
       <div className="logo">
@@ -29,7 +32,13 @@ const Sidebar = () => {
         </Link>
       </ul>
       <div className="logout">
-        <button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+
+            history.push("/login");
+          }}
+        >
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout </span>
         </button>
