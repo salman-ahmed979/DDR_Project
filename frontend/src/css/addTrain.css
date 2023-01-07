@@ -1,0 +1,98 @@
+.addTrain {
+  height: 100vh;
+  position: relative;
+}
+.addTrain .heading {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 5%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 45px;
+  line-height: 60px;
+  font-weight: 800;
+  text-transform: capitalize;
+  color: #ef6848;
+}
+.addTrain .heading h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 45px;
+  line-height: 60px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+.addTrain form {
+  box-shadow: -1px 1px 7px 2px rgb(0 0 0 / 50%);
+  background: #101820ff;
+  padding: 50px 40px 0;
+  border-radius: 15px;
+  width: 60%;
+  /* margin: 54px auto; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.addTrain form label {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 20px 0;
+  color: #ef6848;
+}
+.addTrain form input {
+  width: 100%;
+  /* border-radius: 10px; */
+  outline: none;
+  border: transparent;
+  padding: 5px 10px;
+  background: transparent;
+  transition: 0.3s all ease-in-out;
+  color: #f7f7f7;
+  border-bottom: 2px solid #ef6848;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.addTrain form .button {
+  text-align: right;
+}
+.addTrain form button {
+  padding: 9px 25px;
+  border-radius: 10px;
+  margin: 20px 0;
+  outline: none;
+  border: 2px solid #ef6848;
+  background: transparent;
+  color: #f7f7f7;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s all ease-in-out;
+}
+.addTrain form button:hover {
+  background: #ef6848;
+  color: #101820ff;
+}
+.addTrain form input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+.addTrain form p {
+  color: #ef6848;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+}
+.addTrain form p::after {
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  right: 0;
+  width: 45%;
+  height: 5px;
+  background: #ef6848;
+}

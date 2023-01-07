@@ -7,7 +7,7 @@ const controller = controllerFactory.getController("traincontroller");
 
 router.route("/add").post(controller.addTrain);
 router.route("/getTrains").get(controller.getTrains);
-router.route("/updateTrain").put(controller.updateTrain);
-router.route("/deleteTrain").delete(controller.deleteTrain);
+router.route("/updateTrain/:_id").put(controller.updateTrain);
+router.route("/deleteTrain/:_id").delete(controller.deleteTrain);
 
 module.exports = router;

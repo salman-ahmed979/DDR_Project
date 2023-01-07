@@ -1,3 +1,4 @@
+const { exists } = require("../models/train.model");
 const Train = require("../models/train.model");
 
 class TrainService {
@@ -5,6 +6,8 @@ class TrainService {
   async addTrainDetails(trainObj) {
     const { name, source, destination, totalSeats, price, startDate, endDate } =
       trainObj;
+    const Exist = await Train.findOne({ name, source, destination });
+    if (Exist) throw Error(Exist);
     const train = await Train.create({
       name: name,
       source: source,
@@ -23,6 +26,7 @@ class TrainService {
     let _trains = [];
     trains.map((item) => {
       _trains.push({
+        _id: item._id,
         name: item.name,
         source: item.source,
         destination: item.destination,
@@ -30,32 +34,34 @@ class TrainService {
         availableseats: item.availableseats,
         price: item.price,
         startDate:
-        item.startDate == null ? null : item.startDate.toDateString(),
+          item.startDate == null ? null : item.startDate.toDateString(),
         endDate: item.endDate == null ? null : item.endDate.toDateString(),
       });
     });
     return _trains;
   }
 
-  async updateTrainData(trainObj) {
+  async updateTrainData(trainObj, _id) {
     const { name, source, destination, totalSeats, price, startDate, endDate } =
       trainObj;
-    const filter = { name: name };
-    const train = await Train.findOneAndUpdate(filter, {
-      name: name,
-      source: source,
-      destination: destination,
-      totalseats: parseInt(totalSeats),
-      availableseats: parseInt(totalSeats),
-      price: parseInt(price),
-      startDate: new Date(startDate),
-      endDate: new Date(endDate),
-    });
+    const train = await Train.findOneAndUpdate(
+      { _id: _id },
+      {
+        name: name,
+        source: source,
+        destination: destination,
+        totalseats: parseInt(totalSeats),
+        availableseats: parseInt(totalSeats),
+        price: parseInt(price),
+        startDate: new Date(startDate),
+        endDate: new Date(endDate),
+      }
+    );
     return train;
   }
 
-  async deleteTrainData(name) {
-    const train = await Train.deleteOne({ name: name });
+  async deleteTrainData(_id) {
+    const train = await Train.deleteOne({ _id: _id });
     return train;
   }
 

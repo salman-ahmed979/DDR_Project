@@ -21,6 +21,7 @@ class UserService {
 
   async getUser(_email) {
     const user = await User.findOne({ email: _email });
+
     return user;
   }
 }

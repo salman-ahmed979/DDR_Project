@@ -1,0 +1,102 @@
+.loginform {
+  background: #101820ff;
+}
+.loginform nav a {
+  position: absolute;
+
+  z-index: 1;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Arizonia", cursive;
+  font-size: 27px;
+  display: flex;
+  align-items: center;
+  left: 20px;
+  top: 8px;
+}
+.loginform a img {
+  width: 8%;
+  filter: brightness(0) invert(1);
+}
+.loginform a span {
+  color: #fbfbfb;
+}
+.loginform .formImg {
+  position: relative;
+}
+.loginform .formImg::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+}
+.loginform .formImg img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+.loginform .form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginform .form .form-inner-portion h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 45px;
+  line-height: 60px;
+  font-weight: 800;
+  text-transform: capitalize;
+  color: #f2aa4cff;
+}
+.loginform .form h1 span {
+  display: block;
+}
+.loginform .form form {
+  margin: 50px 0;
+}
+.loginform .form form label {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: block;
+  margin: 15px 0;
+  color: #fbfbfb;
+}
+.loginform .form form input {
+  display: block;
+  border: 1px solid #c5c4c4;
+  outline: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 7px 15px;
+  font-family: "Roboto", sans-serif;
+}
+.loginform .form form .submitButton {
+  margin: 30px 0;
+}
+.loginform .form form .submitButton button {
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  border: transparent;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fbfbfb;
+  background: #f2aa4cff;
+}
+.loginform .form .new-account {
+  text-align: center;
+}
+.loginform .form .new-account a {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #ef6848;
+}

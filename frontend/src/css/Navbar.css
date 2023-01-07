@@ -1,0 +1,32 @@
+.Navbar {
+  background: #101820ff;
+}
+.Navbar nav .collapse {
+  justify-content: end;
+}
+.Navbar nav .collapse form button {
+  color: #fbfbfb;
+  background: #ef6848;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding: 7px 20px;
+  font-weight: 400;
+  border-radius: 21px;
+}
+.Navbar nav a.navbar-brand img {
+  filter: brightness(0) invert(1);
+  width: 22%;
+}
+.Navbar nav a.navbar-brand span {
+  color: #fbfbfb;
+  margin: 0 8px;
+  font-size: 27px;
+  font-weight: 400;
+}
+.Navbar nav a.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-family: "Arizonia", cursive;
+  width: 20%;
+  margin: 10px 0;
+}
